@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
 use App\Models\User;
-use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -21,6 +20,6 @@ class UserController extends Controller
             'password' => $request->password,
         ]);
 
-        return response()->json(['status'=>200, 'message'=>'Registration successful']);
+        return response()->json(['status'=>200, 'message'=>'Registered successfully!']);
     }
 }
