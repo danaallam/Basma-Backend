@@ -24,6 +24,7 @@ Route::group(['prefix' => 'admin'], function() {
     Route::post('/login', [AdminController::class, 'login']);
 
     Route::group(['middleware' => ['jwt.admin']], function () {
+        Route::get('/checkToken', [AdminController::class, 'checkToken']);
         Route::post('/logout', [AdminController::class, 'logout']);
         Route::post('/filter', [AdminController::class, 'filter']);
         Route::post('/registeredUsers', [AdminController::class, 'registeredUsers']);

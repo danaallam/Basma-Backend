@@ -94,4 +94,8 @@ class AdminController extends Controller
         $users = User::where('created_at', '>=', $time)->where('created_at', '<', $now)->get();
         return response()->json(['size'=>sizeof($users),'users'=>$users]);
     }
+
+    public function checkToken(){
+        return response()->json(['status' => 200, "user"=>auth('admin')->user()]);
+    }
 }
