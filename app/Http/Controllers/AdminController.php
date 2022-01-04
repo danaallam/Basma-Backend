@@ -48,7 +48,6 @@ class AdminController extends Controller
     public function logout()
     {
         auth('admin')->logout();
-
         return response()->json(['message' => 'Successfully logged out']);
     }
 
@@ -60,7 +59,8 @@ class AdminController extends Controller
     {
         return response()->json([
             'access_token' => $token,
-            'expires_in'   => auth('admin')->factory()->getTTL() * 60
+            'user'=>auth('admin')->user(),
+            'expires_in' => auth('admin')->factory()->getTTL() * 60
         ]);
     }
 
