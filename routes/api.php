@@ -38,5 +38,7 @@ Route::group(['prefix' => 'admin'], function() {
 });
 
 Route::group(['prefix' => 'user'], function() {
-    Route::post('/register', [UserController::class, 'register']);
+    Route::group(['middleware'=>['recaptcha.verify']],function () {
+        Route::post('/register', [UserController::class, 'register']);
+    });
 });

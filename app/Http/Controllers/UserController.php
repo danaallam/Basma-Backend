@@ -20,6 +20,7 @@ class UserController extends Controller
             'password' => $request->password,
         ]);
 
-        return response()->json(['status'=>200, 'message'=>'Registered successfully!']);
+        return response()->json(['status'=>200, 'message'=>'Registered successfully!', 'user'=>$user]);
+//        return response()->json(['status'=>$request]);
     }
 }
