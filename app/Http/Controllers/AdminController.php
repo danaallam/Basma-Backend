@@ -95,6 +95,36 @@ class AdminController extends Controller
         return response()->json(['size'=>sizeof($users),'users'=>$users]);
     }
 
+    public function day(){
+        $now = Carbon::now();
+        $users = User::where('created_at', '>=', Carbon::yesterday())->where('created_at', '<', $now)->get();
+        return response()->json(['size'=>sizeof($users)]);
+    }
+
+    public function week(){
+        $now = Carbon::now();
+        $users = User::where('created_at', '>=', Carbon::now()->subWeek())->where('created_at', '<', $now)->get();
+        return response()->json(['size'=>sizeof($users)]);
+    }
+
+    public function month(){
+        $now = Carbon::now();
+        $users = User::where('created_at', '>=', Carbon::now()->subMonth())->where('created_at', '<', $now)->get();
+        return response()->json(['size'=>sizeof($users)]);
+    }
+
+    public function month3(){
+        $now = Carbon::now();
+        $users = User::where('created_at', '>=', Carbon::now()->subMonth(3))->where('created_at', '<', $now)->get();
+        return response()->json(['size'=>sizeof($users)]);
+    }
+
+    public function year(){
+        $now = Carbon::now();
+        $users = User::where('created_at', '>=', Carbon::now()->subYear())->where('created_at', '<', $now)->get();
+        return response()->json(['size'=>sizeof($users)]);
+    }
+
     public function checkToken(){
         return response()->json(['status' => 200, "user"=>auth('admin')->user()]);
     }

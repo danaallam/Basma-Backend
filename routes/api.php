@@ -29,6 +29,11 @@ Route::group(['prefix' => 'admin'], function() {
         Route::post('/filter', [AdminController::class, 'filter']);
         Route::post('/registeredUsers', [AdminController::class, 'registeredUsers']);
         Route::get('/getUsers', [AdminController::class, 'getUsers']);
+        Route::get('/day', [AdminController::class, 'day']);
+        Route::get('/week', [AdminController::class, 'week']);
+        Route::get('/month', [AdminController::class, 'month']);
+        Route::get('/month3', [AdminController::class, 'month3']);
+        Route::get('/year', [AdminController::class, 'year']);
     });
 });
 
